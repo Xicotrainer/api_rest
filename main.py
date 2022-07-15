@@ -1,12 +1,16 @@
-from urllib import response
 import requests
 
 if __name__ == '__main__':
-    url = 'https://www.google.com/'
-    response = requests.get(url)
+    url = 'https://httpbin.org/get'
+    arg = {
+        'name': 'Ramanujan',
+        'course': 'api_rest',
+        'level': 'basic'
+    }
+
+    response = requests.get(url, params=arg)
     
     if response.status_code == 200:
-        content = response.content
-        file = open('google.html', 'wb')
-        file.write(content)
-        file.close
+        print(response.url, response.content, end='\n')
+
+        

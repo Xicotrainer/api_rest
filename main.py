@@ -9,7 +9,7 @@ def jsonify(response):
 
 
 if __name__ == '__main__':
-    url = 'https://httpbin.org/put'
+    url = 'https://httpbin.org/delete'
     payload = {
         'name': 'Ramanujan',
         'course': 'api_rest',
@@ -20,7 +20,13 @@ if __name__ == '__main__':
         'access-token': '12345'
     }
 
-    response = requests.put(url, data=json.dumps(payload), headers=headers)
+    response = requests.delete(url, data=json.dumps(payload), headers=headers)
+
+    # This is the CRUD methods for http:
+        # GET. To abtain a resource item
+        # POST. To create a resource item
+        # PUT. To update a resource item
+        # DELETE. To remove a resource item
     
     if response.status_code == 200:
         print(response.url)

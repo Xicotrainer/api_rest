@@ -9,7 +9,7 @@ def jsonify(response):
 
 
 if __name__ == '__main__':
-    url = 'https://httpbin.org/post'
+    url = 'https://httpbin.org/put'
     payload = {
         'name': 'Ramanujan',
         'course': 'api_rest',
@@ -20,9 +20,9 @@ if __name__ == '__main__':
         'access-token': '12345'
     }
 
-    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    response = requests.put(url, data=json.dumps(payload), headers=headers)
     
     if response.status_code == 200:
         print(response.url)
-        print(jsonify(response))
+        # print(jsonify(response))
         print(response.headers['Server'])

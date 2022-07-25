@@ -1,11 +1,15 @@
 import requests
 
 if __name__ == '__main__':
-    url = 'https://i.imgur.com/cK64mEv.jpeg'
+    url = 'https://pokeapi.co/api/v2/pokemon-form/'
     
-    response = requests.get(url, stream=True) #Make the request without downloading the content
-    with open('doggy_image.jpg', 'wb') as file:
-        for chunk in response.iter_content(): # Download the contentent by segments
-            file.write(chunk)
+    response = requests.get(url)
 
-    response.close()
+    if response.status_code == 200:
+        payload = response.json()
+        results = payload.get('results', [])
+
+        if results:
+            for pokemon in results:
+                name = pokemon['name']
+                print(name)
